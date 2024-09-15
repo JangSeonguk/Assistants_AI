@@ -7,14 +7,17 @@ st.set_page_config(
 
 
 with st.sidebar:
-    st.link_button("Open Git", "https://github.com/JangSeonguk/Assistants_AI")
-    choice = st.selectbox(
-        "Choose what you want to use.",
-        (
-            "Home",
-            "Source Code",
+    choice = (
+        st.selectbox(
+            "Choose what you want to use.",
+            (
+                "Home",
+                "Source Code",
+            ),
         ),
     )
+    st.link_button("Open Git", "https://github.com/JangSeonguk/Assistants_AI"),
+
 
 ASSIST_PATH = "pages/Assistants_AI.py"
 
@@ -35,5 +38,5 @@ else:
     )
 
     st.link_button(
-        "AI Assistants Document", "https://platform.openai.com/docs/assistants/overview"
+        "OpenAI Document", "https://platform.openai.com/docs/assistants/overview"
     )

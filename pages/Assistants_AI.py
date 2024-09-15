@@ -162,6 +162,7 @@ def check_api_key(api_key):
         return False
 
 
+# Sidebar 설정
 with st.sidebar:
     api_key = st.text_input("Enter your Open API Key", type="password")
     if api_key:
@@ -188,8 +189,9 @@ def paint_history():
         )
 
 
-def create_assistant():
+def create_assistant(api_key):
     """AI Assistants 생성"""
+    openai.api_key = (api_key,)
     return client.beta.assistants.create(
         name="3gpp expert",
         instructions=(
@@ -301,7 +303,6 @@ if valid_api_key:
 else:
     st.session_state["messages"] = []
     st.session_state["assistant"] = None
-
     st.markdown(
         """
     # AI Assistants
