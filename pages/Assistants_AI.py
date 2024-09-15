@@ -267,8 +267,8 @@ def submit_tool_outputs(run_id, thread_id):
 
 if valid_api_key:
     # assistant 재생성 방지 로직 검토 필요
+    client = OpenAI(api_key=input_api_key)
     if st.session_state["assistant"] == None:
-        client = OpenAI(api_key=input_api_key)
         st.session_state["assistant"] = create_assistant()
     assistant = st.session_state["assistant"]
 
