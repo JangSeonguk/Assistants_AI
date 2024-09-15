@@ -269,7 +269,7 @@ def submit_tool_outputs(run_id, thread_id):
 if valid_api_key:
     # assistant 재생성 방지 로직 검토 필요
     if st.session_state["assistant"] == None:
-        st.session_state["assistant"] = create_assistant()
+        st.session_state["assistant"] = create_assistant(api_key)
     assistant = st.session_state["assistant"]
 
     send_message("뭐든지 물어보세요.", "assistant", save=False)
