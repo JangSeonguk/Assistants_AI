@@ -191,6 +191,7 @@ def paint_history():
 
 def create_assistant(api_key):
     """AI Assistants 생성"""
+    print(api_key)
     openai.api_key = api_key
     return client.beta.assistants.create(
         name="3gpp expert",
