@@ -164,9 +164,9 @@ def check_api_key(api_key):
 
 # Sidebar 설정
 with st.sidebar:
-    api_key = st.text_input("Enter your Open API Key", type="password")
-    if api_key:
-        valid_api_key = check_api_key(api_key)
+    input_api_key = st.text_input("Enter your Open API Key", type="password")
+    if input_api_key:
+        valid_api_key = check_api_key(input_api_key)
 
 
 def save_message(message, role):
@@ -191,7 +191,7 @@ def paint_history():
 
 def create_assistant(api_key):
     """AI Assistants 생성"""
-    openai.api_key = (api_key,)
+    openai.api_key = api_key
     return client.beta.assistants.create(
         name="3gpp expert",
         instructions=(
@@ -269,7 +269,7 @@ def submit_tool_outputs(run_id, thread_id):
 if valid_api_key:
     # assistant 재생성 방지 로직 검토 필요
     if st.session_state["assistant"] == None:
-        st.session_state["assistant"] = create_assistant(api_key)
+        st.session_state["assistant"] = create_assistant(input_api_key)
     assistant = st.session_state["assistant"]
 
     send_message("뭐든지 물어보세요.", "assistant", save=False)
